@@ -1,0 +1,324 @@
+/**app.wxss**/
+page{
+  background-color: #EDEDED;
+}
+view, span, label{
+  font-family: "microsoft yahei"
+}
+span{
+  font-weight: bold
+}
+.section{
+  margin: 5rpx 0;
+}
+.section-item{
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  background: #FFF;
+  margin: 8rpx 0;
+}
+checkbox .wx-checkbox-input,radio .wx-radio-input{
+   border-radius: 50% !important;
+   width: 35rpx !important;
+   height: 35rpx !important;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked,radio .wx-radio-input.wx-radio-input-checked{
+   border-color: #D0021B !important;
+   background: #D0021B !important;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before,radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 50% !important;
+   width: 35rpx !important;
+   height: 35rpx !important;
+   line-height: 35rpx !important;
+   text-align: center !important;
+   font-size:28rpx !important;
+   color:#fff !important;
+   background: transparent !important;
+   transform:translate(-50%, -50%) scale(1) !important;
+   -webkit-transform:translate(-50%, -50%) scale(1) !important;
+}
+.arrow{
+  position: relative;
+  width: 28rpx;
+  height: 28rpx;
+}
+.arrow:after, .arrow:before {
+  border: 16rpx solid transparent;
+  width: 0;
+  height: 0;
+  position: absolute;
+  content: ' '
+}
+.arrow-top:after, .arrow-top:before {
+  border-bottom: 16rpx solid #fff;
+  top: -10rpx;
+  left: 0;
+}
+
+.arrow-top:before {
+  border-bottom-color: #858585;
+  top: -15rpx;
+}
+.arrow-bottom:after, .arrow-bottom:before {
+  border-top: 16rpx solid #fff;
+  bottom: -10rpx;
+  left: 0;
+}
+.arrow-bottom:before {
+  border-top-color: #858585;
+  bottom: -15rpx;
+}
+.arrow-right:after, .arrow-right:before {
+  border-left: 16rpx solid #fff;
+  top: 0;
+  right: -10rpx;
+}
+.arrow-right:before {
+  border-left-color: #858585;
+  right: -15rpx;
+}
+.arrow-left:after, .arrow-left:before {
+  border-right: 16rpx solid #fff;
+  top: 0;
+  left: -10rpx;
+}
+.arrow-left:before {
+  border-right-color: #858585;
+  left: -15rpx;
+}
+.btn-custom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 136rpx;
+  background-color: #8B572A;
+}
+.title{
+  font-size: 35rpx;
+  font-weight: bold
+}
+.price{
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.price > span{
+  margin-right: 8rpx
+}
+.price > span:nth-of-type(1){
+  color: #8B572A !important;
+}
+.price > span:nth-of-type(2){
+  color: #0B0B0A;
+  font: lighter 28rpx 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.price > span:nth-last-of-type(1){
+  color: #0B0B0A;
+}
+.money-logo{
+  color: #b1b1b1;
+  margin-right: 10rpx;
+  opacity: 0.8
+}
+.money-logo-lg{
+  color: #8B572A;
+  margin-right: 6rpx;
+  opacity: 0.5
+}
+.money-logo-lg + span{
+  color: #8B572A;
+}
+.placeholder-text{
+  opacity: 0.5;
+  color: #9B9B9B;
+}
+.user-address{
+  height: 180rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #FFF;
+  justify-content: space-around;
+  align-items: center;
+}
+.user-address > image{
+  width:25rpx;
+  height: 40rpx;
+}
+.user-adderss-info{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.user-adderss-info > view{
+  font-size: 28rpx;
+  padding: 20rpx 15rpx;
+}
+.user-adderss-info > view:nth-of-type(1){
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.user-adderss-info > view:nth-of-type(2){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.user-adderss-info-name > span{
+  font-weight: normal;
+  color: #D0021B;
+}
+.order-content,.order-footer,.order-price{
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #FFF;
+}
+.order-price{
+  margin: 10rpx 20rpx;
+}
+.order-price > view{
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 28rpx;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 0;
+}
+.order-price > view:last-of-type{
+  justify-content: flex-end;
+  font-size: 30rpx;
+}
+.order-content{
+  padding-top: 42rpx;
+}
+.order-goods-list{
+  background-color: #EDEDED;
+}
+.fa-icon{
+  width: 35rpx;
+  height: 35rpx;
+}
+.section-delete{
+  margin-left: -160rpx;
+}
+.btn-delete{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  color: #FFF;
+  background-color: #D0021B;
+  padding: 15rpx 20rpx;
+  text-align:center;
+}
+image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 加载动画 */
+.wx-loading-toast{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  z-index:2000;
+  width: 160rpx;
+  height: 180rpx;
+  background: #000;
+  opacity: 0.6;
+  border-radius: 10rpx;
+  padding: 25rpx 0;
+}
+.wx-loading-cell{
+  text-align: center;
+}
+.text-line{
+  color: #bebebe;
+  margin-top: 12rpx;
+  font-size: 30rpx;
+}
+.circle-line{
+  width: 100rpx;
+  height: 100rpx;
+  display: inline-block;
+  position: relative;
+}
+.circle-line text{
+    display: block;
+    width: 50%;
+    height: 7rpx;
+    opacity: .7;
+    position: absolute;
+    top: calc(50% - 2.5px);
+    left: 0px;
+    transform-origin: center right; 
+    animation: circle 1.5s linear infinite; 
+}
+.circle-line text::before{
+    content: '';
+    display: block;
+    width: 21rpx;
+    height: 7rpx;
+    position: absolute;
+    top: 0;
+    right: 14rpx;
+    background-color: #bebebe;
+}
+.circle-line text:nth-child(1){
+    transform: rotate(0deg);
+    animation-delay: 0.2s;
+}
+.circle-line text:nth-child(2){
+    transform: rotate(45deg);
+    animation-delay: 0.4s;
+}
+.circle-line text:nth-child(3){
+    transform: rotate(90deg);
+    animation-delay: 0.6s;
+}
+.circle-line text:nth-child(4){
+    transform: rotate(135deg);
+    animation-delay: 0.8s;
+}
+.circle-line text:nth-child(5){
+    transform: rotate(180deg);
+    animation-delay: 1s;
+}
+.circle-line text:nth-child(6){
+    transform: rotate(225deg);
+    animation-delay: 1.2s;
+}
+.circle-line text:nth-child(7){
+    transform: rotate(270deg);
+    animation-delay: 1.4s;
+}
+.circle-line text:nth-child(8){
+    transform: rotate(315deg);
+    animation-delay: 1.6s;
+}
+@keyframes circle {
+    0%{
+        opacity: 0.05;
+    }
+    100%{
+        opacity: 0.9;
+    }
+}
+
+.item-select{
+  color: #D0021B !important;
+  border: 3rpx solid #D0021B !important;
+}
+.text-select{
+  color: #ff4500
+}
+
+.disable{
+  color: #bebebe;
+  opacity: 0.7;
+}

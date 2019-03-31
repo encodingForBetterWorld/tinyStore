@@ -1,0 +1,4 @@
+/* common/templates/picker.wxss */
+.address-section-form-area-picker{
+  text-align: end;
+}

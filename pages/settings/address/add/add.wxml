@@ -1,0 +1,7 @@
+<!--pages/settings/address/add/add.wxml-->
+<import src='/common/templates/btn.wxml'/>
+<import src='/common/templates/section.wxml'/>
+<view class='container'>
+  <template is="address-section" data="{{address_form: address_form,province_name_list:province_name_list,city_name_list:city_name_list,area_name_list:area_name_list}}"></template>
+  <template is="btn-1" data="{{options}}"></template>
+</view>

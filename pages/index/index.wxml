@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<import src='/common/templates/toast.wxml'/>
+<view class="container">
+  <view class="section container-swiper">
+    <swiper wx:if="{{banners.length > 1 }}" class='v-swiper'
+    indicator-dots="{{swiper_settings.indicatorDots}}"
+    autoplay="{{swiper_settings.autoplay}}"
+    interval="{{swiper_settings.interval}}"
+    duration="{{swiper_settings.duration}}"
+  >
+      <block wx:for="{{banners}}" wx:key="key">
+        <navigator url="{{item.url?item.url:'/pages/goods/details/details?goods_id=' + item.goods}}">
+          <swiper-item>
+            <image src="{{assets_host + item.img}}" class="slide-image"/>
+          </swiper-item>
+        </navigator>
+      </block>
+    </swiper>
+    <navigator wx:elif="{{ banners.length > 0 }}" class='v-swiper' url="{{banners[0].url?banners[0].url:'/pages/goods/details/details?goods_id=' + banners[0].goods}}">
+        <image src="{{assets_host + banners[0].img}}"/>
+    </navigator>
+  </view>
+  <view class='section container-goods'>
+    <navigator wx:for="{{goodses}}" wx:key="key" class='section-item item-goods' url="/pages/goods/details/details?goods_id={{item.id}}">
+        <view class='item-goods-img'>
+          <image src="{{assets_host + item.img}}"/>
+        </view>
+        <view class='item-goods-content-list'>
+          <view class='title item-goods-content'
+          >
+          <span>{{item.name}}</span>
+          </view>
+          <view class='goods-desc item-goods-content'>
+          <span>{{item.description}}</span>
+          </view>
+          <view class='price item-goods-content'>
+            <span>¥{{item.min_price==item.max_price?item.min_price:item.min_price+'~'+item.max_price}}</span>
+          </view>
+        </view>
+      </navigator>
+  </view>
+</view>
+<template is="wx-loading-toast" data="{{isLoading}}"></template>

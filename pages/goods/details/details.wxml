@@ -1,0 +1,27 @@
+<!--pages/goods/details/details.wxml-->
+<import src='/common/templates/modal.wxml'/>
+<view class='container' wx:if="{{goods}}">
+  <view class='section goods-details-header'>
+    <view class='goods-details-img'>
+      <image src="{{assets_host + goods.img}}"></image>
+    </view>
+    <view>
+      <span>{{goods.name}}</span>
+    </view>
+    <view>
+      <span class="money-logo-lg">¥</span><span>{{goods.min_price==goods.max_price?goods.min_price:goods.min_price+'~'+goods.max_price}}</span>
+    </view>
+  </view>
+  <view class='section goods-details-desc'>
+  {{goods.description}}
+  </view>
+  <view class='btn-custom btn-2'>
+    <view bindtap="toggleModal" data-status="open" data-type="cart">
+      <span>加入购物车</span>
+    </view>
+    <view bindtap="toggleModal" data-status="open" data-type="pay">
+      <span>立即购买</span>
+    </view>
+  </view>
+</view>
+<template is="modal-goods-confirm" data="{{assets_host: assets_host, goods:goods, showModalStatus: showModalStatus, animationData: animationData, goods_types: goods_types, curr_goods_type_idx: curr_goods_type_idx, curr_goods_type: curr_goods_type, goods_type_count: goods_type_count}}"></template>

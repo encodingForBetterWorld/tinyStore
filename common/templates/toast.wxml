@@ -1,0 +1,19 @@
+<template name="wx-loading-toast">
+  <view class="wx-loading-toast" style="display:{{isLoading?'block':'none'}}">
+    <view class="wx-loading-cell">
+      <view class="circle-line">
+        <text></text>
+        <text></text>
+        <text></text>
+        <text></text>
+        <text></text>
+        <text></text>
+        <text></text>
+        <text></text>
+      </view>
+      <view class="text-line">
+        加载中
+      </view>
+    </view>
+  </view>
+</template>

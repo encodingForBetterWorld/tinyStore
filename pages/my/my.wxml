@@ -1,0 +1,79 @@
+<import src='/common/templates/btn.wxml'/>
+<import src='/common/templates/section.wxml'/>
+<import src='/common/templates/modal.wxml'/>
+<view class='container'>
+ <view class='my-header'>
+  <navigator class='user-settings-btn' url="/pages/settings/settings">
+    <image src="/assets/icons/fa-cog-white.png"></image>
+  </navigator>
+  <navigator class='user-info' url="/pages/settings/settings">
+    <image class='user-image' src='{{userInfo.avatarUrl}}'/>
+    <view class='user-name'>{{userInfo.nickName}}</view>
+  </navigator>
+  <view class='user-order'>
+    <view class='my-order-title'>
+      我的订单
+    </view>
+    <view class='my-order-selection-group'>
+      <view wx:for="{{my_order_selections}}" wx:key="key" class="my-order-selection{{header_order_status==index?' text-select':''}}" data-index="{{index}}" bindtap='tapOrderHeader'>
+        <image src="/assets/icons/{{item[0]+(header_order_status==index?'-focus':'')}}.png"></image>
+        <view>{{item[1]}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='my-orders-switch'>
+  </view>
+ </view>
+ <view class='section my-order-list btn-footer' wx:if="{{orders.length > 0}}">
+  <checkbox-group bindchange="checkOrderPay">
+  <view wx:for="{{orders}}" wx:key="key" class='section-item section-item-order'>
+    <view class='item-order-header'>
+      <view class='item-order-header-text item-order-header-text-checkbox' wx:if="{{item.status==0}}">
+        <checkbox value="{{index}}" />
+        <span>{{item.name}}</span>
+      </view>
+      <view wx:else>
+        <view class='item-order-header-text'>
+          <span>{{item.name}}</span>
+        </view>
+      </view>
+      <view class="item-order-header-status">
+        <span wx:if="{{item.status==0}}" class="unpay-status">待付款</span>
+        <span wx:if="{{item.status==1}}" class="paying-status">已完成</span>
+        <span wx:if="{{item.status==2}}">已取消</span>
+        <span wx:if="{{item.status==3}}" class="unpay-status">确认交易中</span>
+        <span wx:if="{{item.status==4}}" class="unpay-status">安排发货中</span>
+        <span wx:if="{{item.status==5}}" class="paying-status">物流进行中</span>
+      </view>
+    </view>
+    <view class='item-order-body'>
+      <navigator wx:for="{{item.orderitem_set}}" wx:for-item="order_item" class='order-section' url="/pages/order/details/details?id={{item.id}}" wx:key="orderitem_id">
+      <template is="order-section" data="{{...order_item, assets_host:assets_host}}"></template>
+      </navigator>
+    </view>
+    <view class='item-order-footer'>
+      <view class='item-order-total-info'>
+      <span>共{{item.total_count}}件商品</span><span>总价：{{item.total_price}}</span><span>（含运费{{item.freight}}）</span>
+      </view>
+      <view class='order-btngroup'>
+        <block wx:if="{{item.status==0}}">
+        <view class='order-btn-close' data-id='{{item.id}}' data-index='{{index}}' data-type='list' bindtap='singleClose'>
+        关闭订单
+        </view>
+        <view class='order-btn-pay' data-id='{{item.id}}' data-index='{{index}}' data-type='list' bindtap='singlePay'>
+        继续支付
+        </view>
+        </block>
+        <view class='order-btn-close' wx:else>
+        <navigator url="/pages/order/details/details?id={{item.id}}">
+          查看详情
+        </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+ </checkbox-group>
+ </view>
+   <template is="btn-pay" data="{{options}}" wx:if="{{options.btn_text && header_order_status==0}}"></template>
+</view>
+<template is="modal-pay" data="{{showModalPayStatus: showModalPayStatus,animationDataPay: animationDataPay, qrcode:qrcode, qrcode_price:qrcode_price,assets_host:assets_host, page_type:'list'}}" wx:if="{{header_order_status==0}}"></template>

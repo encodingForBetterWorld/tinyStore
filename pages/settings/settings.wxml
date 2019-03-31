@@ -1,0 +1,15 @@
+<!--pages/settings/settings.wxml-->
+<view class='container'>
+  <view class='pl-settings'>
+    <navigator class='pl-settings-item settings-user-item' url='address/index'>
+      <span>收货地址</span>
+      <i class='arrow arrow-right'></i>
+    </navigator>
+  </view>
+  <view class='pl-settings'>
+    <view class='pl-settings-item settings-system-item'>
+      <span>关于开发者</span>
+      <i class='arrow arrow-right'></i>
+    </view>
+  </view>
+</view>

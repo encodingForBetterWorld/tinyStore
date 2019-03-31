@@ -1,0 +1,146 @@
+/* pages/my/my.wxss */
+@import "/common/templates/btn.wxss";
+@import "/common/templates/section.wxss";
+@import "/common/templates/modal.wxss";
+.my-header{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  left: -10%;
+  width: 120%;
+  height: 320rpx;
+  border-bottom: 1rpx solid #979797;
+  border-radius: 0% 0% 100% 100%;
+  background-color: #8B572A;
+}
+.user-info{
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 6rpx;
+  height: 250rpx;
+}
+.user-image{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 100%;
+  background-color: #FFF;
+  border: 1rpx solid #979797;
+}
+.user-name{
+  color: #FFF;
+  text-align: center;
+}
+.user-order{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  top: 220rpx;
+  height: 240rpx;
+  border-radius: 18rpx;
+  background-color: #FFF;
+  border: 1rpx solid #979797;
+}
+.my-order-title{
+  width: 86%;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  vertical-align: middle;
+  border-bottom: 5rpx solid #D7D7D7;
+}
+.my-order-selection-group{
+  width: 86%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.my-order-selection{
+  margin: 30rpx 0;
+  height: 100rpx;
+  font-size: 25rpx;
+  text-align: center;
+}
+.my-order-selection > image{
+  width: 56rpx;
+  height: 56rpx;
+}
+.user-settings-btn{
+  position: absolute;
+  top: 6rpx;
+  right: 100rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+.my-order-list{
+  position: absolute;
+  top: 490rpx;
+  width: 100%;
+}
+.section-item-order{
+  flex-flow: column nowrap;
+}
+.item-order-header{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30rpx;
+  line-height: 100rpx;
+  vertical-align: middle;
+}
+.item-order-header-text{
+  width: 540rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-size: 30rpx;
+}
+.item-order-header-text-checkbox > span{
+  padding-left: 20rpx;
+}
+.item-order-header-status > span{
+  font-size: 30rpx;
+  color: #bebebe
+}
+.unpay-status{
+  color: #D0021B !important;
+}
+.paying-status{
+  color: #44b549 !important;
+}
+.item-order-body{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+}
+
+.item-order-footer{
+  height: 160rpx;
+  padding: 20rpx 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.item-order-total-info > span{
+  font-size: 30rpx;
+  font-weight: normal;
+  margin-left: 12rpx;
+}
+.order-btngroup{
+  display: flex;
+  font-size: 30rpx;
+}
+.order-btngroup > view{
+  padding: 12rpx 30rpx;
+  margin-right: 12rpx;
+}
+.order-btn-close{
+  border: 5rpx solid #b1b1b1;
+}
+.order-btn-pay{
+  color: #D0021B;
+  border: 5rpx solid #D0021B;
+}

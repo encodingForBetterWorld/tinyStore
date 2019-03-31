@@ -1,0 +1,15 @@
+/* pages/order/confirm/confirm.wxss */
+@import "/common/templates/btn.wxss";
+@import "/common/templates/section.wxss";
+@import "/common/templates/modal.wxss";
+.order-remark{
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 10rpx 20rpx 42rpx 20rpx;
+  padding: 8rpx 0;
+  font-size: 28rpx;
+  align-items: center;
+}
+.order-price{
+  border-bottom: 5rpx solid #EDEDED;
+}

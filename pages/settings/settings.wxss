@@ -1,0 +1,25 @@
+/* pages/settings/settings.wxss */
+.pl-settings{
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  margin: 25rpx 10rpx 0 0;
+}
+.pl-settings-item{
+  display: flex;
+  background-color: #FFF;
+  margin: 3rpx 0;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.pl-settings-item > span{
+  font-weight: normal;
+  font-size: 28rpx
+}
+.settings-user-item{
+  padding: 45rpx 25rpx;
+}
+.settings-system-item{
+  padding: 36rpx 25rpx;
+}

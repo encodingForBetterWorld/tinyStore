@@ -1,0 +1,40 @@
+<import src='/common/templates/btn.wxml'/>
+<view class='container'>
+  <view class='section btn-footer'>
+   <checkbox-group bindchange="checkCartPay">
+   <block wx:for="{{list}}" wx:key="key">
+    <view data-index="{{index}}" class="section-item item-cart {{item.id==delete_id?'section-delete':''}}" bindtouchstart="touchStart" bindtouchmove="touchMove">
+      <navigator class='item-cart-img' url="/pages/goods/details/details?goods_id={{item.goods.id}}">
+        <image src="{{assets_host + item.img}}"/>
+      </navigator>
+      <view class='item-cart-content'>
+        <view class='item-cart-title title'
+            >
+          <checkbox value="{{index}}"/>
+          {{item.goods.name}}
+        </view>
+        <view>
+          <view class='item-cart-type'>
+            型号：{{item.description}}
+          </view>
+          <view class='price'>
+            <span>¥{{item.price}}</span>
+            <span>×</span>
+            <span>{{item.select_count}}</span>
+          </view>
+        </view>
+      </view>
+      <view class='item-cart-count-picker'>
+        <view class='arrow arrow-top' bindtap="cartCountEdit" data-index="{{index}}" data-type="add" data-id='{{item.id}}'></view>
+        <span class>{{item.select_count}}</span>
+        <view class='arrow arrow-bottom' bindtap="cartCountEdit" data-index="{{index}}" data-type="sub" data-id='{{item.id}}'></view>
+      </view>
+      <view class='btn-delete' wx:if="{{item.id==delete_id}}" bindtap='cartRemove' data-index="{{index}}" data-id='{{item.id}}'>
+        删除
+      </view>
+    </view>
+   </block>
+  </checkbox-group>
+  </view>
+  <template is="btn-pay" data="{{options}}" wx:if="{{options.btn_text}}"></template>
+</view>

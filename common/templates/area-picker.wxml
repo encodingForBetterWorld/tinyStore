@@ -1,0 +1,35 @@
+<!--common/templates/picker.wxml-->
+<template name="area-picker">
+  <view class='address-section-form-item' wx:if="{{province_name_list}}">
+    <view>
+      所在地区
+    </view>
+    <view class='address-section-form-area-picker'>
+      <picker bindchange="pick_area" value="{{index}}" range="{{province_name_list}}" data-level="0">
+        <view class="picker{{province?'':' placeholder-text'}}">
+          {{province?province:'请选择'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class='address-section-form-item' wx:if="{{city_name_list}}">
+    <view></view>
+    <view class='address-section-form-area-picker'>
+      <picker bindchange="pick_area" value="{{index}}" range="{{city_name_list}}" data-level="1">
+        <view class="picker{{city?'':' placeholder-text'}}">
+          {{city?city:'请选择'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class='address-section-form-item' wx:if="{{area_name_list}}">
+    <view></view>
+    <view class='address-section-form-area-picker'>
+      <picker bindchange="pick_area" value="{{index}}" range="{{area_name_list}}" data-level="2">
+        <view class="picker{{area?'':' placeholder-text'}}">
+          {{area?area:'请选择'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+</template>

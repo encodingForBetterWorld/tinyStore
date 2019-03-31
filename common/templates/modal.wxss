@@ -1,0 +1,236 @@
+/* common/templates/modal.wxss */
+/*mask*/
+@import "./section.wxss";
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+ 
+/*content*/
+.modal-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  width: 100%;
+  height: 100%;
+  border-radius: 5rpx 5rpx 0 0;
+  opacity: 0;
+}
+.modal-pay-box{
+  position: fixed;
+  z-index: 1002;
+  width: 70%;
+  height: 70%;
+  left: 15%;
+  border-radius: 5rpx 5rpx 0 0;
+}
+.modal-container{
+  background-color: #cacaca;
+  margin-top: 30%;
+  height: 100%;
+}
+.modal-container-pay{
+  margin: auto !important;
+}
+.modal-container > view{
+  background-color: #FFF;
+}
+.modal-header{
+  padding:0 25rpx;
+  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-bottom: 3rpx;
+}
+.modal-header-goods{
+  min-height: 180rpx;
+  padding-top: 15rpx;
+}
+.modal-header-address{
+  min-height: 120rpx;
+  align-items: center;
+}
+.modal-header-pay{
+  min-height: 90rpx;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+}
+.modal-title-goods > view:nth-of-type(1){
+  position: absolute;
+  width: 280rpx;
+  height: 280rpx;
+  margin-top: -140rpx;
+}
+.modal-title-goods > view:nth-of-type(1) > image{
+  border-radius: 12rpx;
+}
+.modal-title-goods > view:nth-of-type(2) {
+  margin: 15rpx 0 0 320rpx;
+}
+.modal-title-address{
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+.modal-title-address > view{
+  font-size: 28rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.modal-title-select{
+  border-bottom: 7rpx solid #D0021B;
+}
+.modal-content {
+  min-height: 100%;
+  margin-bottom: 130rpx;
+}
+.modal-content-addres{
+  background-color: #FFF;
+}
+.modal-content-pay{
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.modal-section-pay{
+  padding: 30rpx 15rpx;
+}
+.modal-section-pay-tip{
+  font-size: 28rpx;
+  line-height: 50rpx;
+  vertical-align: middle;
+  text-align: center;
+}
+.modal-section-pay-price-clipboard{
+  background-color: #bebebe;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-section-pay-qrcode{
+  width: 72%;
+  height: 80%;
+}
+.modal-section-pay-price{
+  position: relative;
+}
+.modal-section-pay-price span{
+  margin-right: 10rpx;
+}
+.modal-section-pay-price-copy{
+  position: absolute;
+  right: -48rpx;
+  bottom: -6rpx;
+}
+.modal-close-btn-o{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3rpx solid #989898;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 42rpx;
+}
+.modal-close-btn-o > span{
+  font-weight: lighter !important;
+  color: #989898;
+}
+.modal-close-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3rpx solid #cacaca;
+  background-color: #cacaca;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 42rpx;
+}
+.modal-close-btn > span{
+  font-weight: lighter !important;
+  color: #FFF;
+}
+.modal-content-section{
+  padding: 24rpx 0;
+  margin: 0 30rpx;
+  font-size: 30rpx;
+}
+.modal-content-section:first-of-type{
+  border-bottom: 3rpx solid #cacaca;
+}
+.modal-content-address-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx;
+  border-bottom: 3rpx solid #cacaca;
+}
+.modal-content-section > view:nth-of-type(2){
+  margin-top: 30rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.goods_type_count_text{
+  font-size: 26rpx;
+  padding-left: 18rpx;
+  color: #bebebe;
+}
+.modal-content-goods-types{
+  display: flex;
+  flex-flow: row wrap;
+}
+.modal-content-goods-types-item{
+  margin: 12rpx 8rpx;
+  padding: 16rpx 25rpx;
+  border: 3rpx solid #cacaca;
+  text-align: center;
+}
+.modal-content-goods-count{
+  width: 40%;
+  display: flex;
+  border: 3rpx solid #cacaca;
+}
+.modal-content-goods-count input{
+  text-align: center;
+  border-left: 3rpx solid #cacaca;
+  border-right: 3rpx solid #cacaca;
+}
+.count-operator{
+  width: 100rpx;
+  text-align: center;
+}
+.modal-section-pay-btngroup{
+  display: flex;
+  height: 180rpx;
+}
+.modal-section-pay-btngroup > view{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+}
+.pay-btn-close{
+  border-right: 1rpx solid #bebebe;
+}
+.pay-btn-confirm{
+  border-left: 1rpx solid #bebebe;
+  color: #44b549;
+}

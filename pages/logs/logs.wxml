@@ -1,0 +1,13 @@
+<!-- <view class="section">
+  <view class="section__title">普通选择器</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      当前选择：{{array[index]}}
+    </view>
+  </picker>
+</view> -->
+<!-- <view>内容：{{contents}} </view>
+<view  bindtap='copyText' data-text="{{contents}}">复制</view> -->
+<import src='/common/templates/modal.wxml'/>
+
+<template is="modal-pay" data="{{showModalPayStatus: showModalPayStatus,animationDataPay: animationDataPay}}"></template>

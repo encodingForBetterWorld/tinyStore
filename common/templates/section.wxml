@@ -1,0 +1,63 @@
+<!--common/templates/section.wxml-->
+<import src='./area-picker.wxml'/>
+<!-- 订单页面 -->
+<template name='order-section'>
+  <image src="{{assets_host+img}}"/>
+  <view class="item-order-content">
+    <view class='item-order-content-title'>
+    {{name}}
+    </view>
+    <view class='item-order-content-type'>
+    型号：{{goods_type_name}}
+    </view>
+  </view>
+  <view>
+    <view class='item-order-content-price'>
+        <span class="money-logo">¥</span>{{price}}
+    </view>
+    <view class='item-order-content-count'>
+      <span>×</span><span>{{count}}</span>
+    </view>
+  </view>
+</template>
+<!-- 地址页面 -->
+<template name='address-section'>
+  <view class='address-section-form'>
+    <view class='address-section-form-item'>
+      <view>
+        收货人姓名
+      </view>
+      <view>
+        <input type='text' placeholder='请输入收货人姓名' placeholder-class='placeholder-text' value='{{address_form.name}}' bindchange='changeAddressFrom' data-name="name"></input>
+      </view>
+    </view>
+    <view class='address-section-form-item'>
+      <view>
+      手机号码
+      </view>
+      <view>
+        <input type='text' placeholder='请输入收货人手机号码' placeholder-class='placeholder-text' value='{{address_form.phone}}' bindchange='changeAddressFrom' data-name="phone">></input>
+      </view>
+    </view>
+    <template is="area-picker" data="{{...address_form,province_name_list:province_name_list,city_name_list:city_name_list,area_name_list:area_name_list}}">
+    </template>
+    <view class='address-section-form-item'>
+      <view>
+        详细地址
+      </view>
+      <view>
+        <input type='text' placeholder='请输入街道地址' placeholder-class='placeholder-text' value='{{address_form.detail}}' bindchange='changeAddressFrom' data-name="detail"></input>
+      </view>
+    </view>
+  </view>
+  <view class='address-section-form'>
+   <view class='address-section-default'>
+    <view>
+      设置默认地址
+    </view>
+    <view>
+      <switch checked='{{address_form.is_default}}' bindchange='changeAddressFrom' data-name="is_default"/>
+    </view>
+   </view>
+  </view>
+</template>

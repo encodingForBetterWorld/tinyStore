@@ -1,0 +1,69 @@
+<!--pages/order/confirm/confirm.wxml-->
+<import src='/common/templates/btn.wxml'/>
+<import src='/common/templates/section.wxml'/>
+<import src='/common/templates/modal.wxml'/>
+<view class='container'>
+  <view class='section user-address' bindtap="toggleModal" data-status="open" wx:if="{{selected_address}}">
+    <image src="/assets/icons/fa-map-marker-gray.png"></image>
+    <view class='user-adderss-info'>
+      <view>
+        <view>
+        收件人：{{selected_address.name}}
+        </view>
+        <view>
+        {{selected_address.phone}}
+        </view>
+      </view>
+      <view>
+      收货地址：{{selected_address.province + selected_address.city + selected_address.area + selected_address.detail}}
+      </view>
+    </view>
+    <view class='fa-icon' wx:if="{{!modal_disable}}">
+      <image src="/assets/icons/fa-edit.png"></image>           
+    </view>
+  </view>
+  <view class='section order-content btn-footer' wx:if='{{order_datas && order_datas.length > 0}}'>
+    <view class='order-goods-list'>
+      <view wx:for="{{order_datas}}" wx:for-item="order" class='order-section' wx:key="order_id">
+          <template is="order-section" data="{{...order, assets_host:assets_host}}"></template>
+      </view>
+    </view>
+    <view class="order-footer">
+      <view class='order-price'>
+        <view>
+          <view>
+          商品金额：
+          </view>
+          <view>
+            <span class="money-logo">¥</span>{{total_price}}
+          </view>
+        </view>
+        <view>
+          <view>
+          运费：
+          </view>
+          <view>
+            <span class="money-logo">¥</span>{{freight}}
+          </view>
+        </view>
+        <view>
+          <view>
+          实付款：
+          </view>
+          <view>
+          <span class="money-logo-lg">¥</span><span>{{total_price+freight}}</span>
+          </view>
+        </view>
+      </view>
+      </view>
+      <view class='order-remark'>
+        <view>
+        买家留言：
+        </view>
+        <input type='text' placeholder='请输入买家留言' placeholder-class="placeholder-text" data-name="remark" bindchange="inputForm" disabled='{{order_id}}'></input>
+      </view>
+  </view>
+  <template is="btn-1" data="{{options}}"></template>
+</view>
+<template is="modal-address-edit" data="{{address_form: address_form,selected_address:selected_address,showModalStatus: showModalStatus,animationData: animationData,sectionIndex: sectionIndex,addresses: addresses, province_name_list:province_name_list,city_name_list:city_name_list,area_name_list:area_name_list}}"></template>
+<template is="modal-pay" data="{{showModalPayStatus: showModalPayStatus,animationDataPay: animationDataPay, qrcode:qrcode, qrcode_price:qrcode_price,assets_host:assets_host, page_type:'confirm'}}"></template>

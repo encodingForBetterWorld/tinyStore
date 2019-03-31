@@ -1,0 +1,31 @@
+/* pages/goods/details/details.wxss */
+@import "/common/templates/btn.wxss";
+@import "/common/templates/modal.wxss";
+.goods-details-header{
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #FFF;
+}
+.goods-details-header > view{
+  width: 90%;
+  margin:15rpx 5%;
+}
+.goods-details-header > view:nth-of-type(2){
+  margin-top: 20rpx !important;
+  margin-bottom: 5rpx !important;
+}
+.goods-details-header > view:nth-of-type(3){
+  margin-top: 0 !important;
+  margin-bottom: 42rpx !important;
+}
+.goods-details-img > image{
+  height: 620rpx;
+  width: 100%;
+}
+.goods-details-desc{
+    background-color: #FFF;
+    font-size: 28rpx;
+    color: #858585;
+    padding: 50rpx 42rpx;
+    min-height: 220rpx;
+}

@@ -1,0 +1,6 @@
+/* pages/settings/address/add/add.wxss */
+@import "/common/templates/btn.wxss";
+@import "/common/templates/section.wxss";
+.address-section-form{
+    background: #EDEDED !important;
+}

@@ -1,0 +1,18 @@
+<template name='btn-1'>
+  <view class='btn-custom btn-1' bindtap='{{options.bindtap}}'>
+    <view class='btn-pay-text'>
+      <span>{{options.btn_text}}</span>
+    </view>
+  </view>
+</template>
+<template name='btn-pay'>
+  <view class='btn-custom btn-pay'  bindtap='{{options.bindtap}}'>
+    <view class='btn-pay-price'>
+      <span>¥</span>
+      <span>{{options.total_price}}</span>
+    </view>
+    <view class='btn-pay-text'>
+      <span>{{options.btn_text}}</span>
+    </view>
+  </view>
+</template>

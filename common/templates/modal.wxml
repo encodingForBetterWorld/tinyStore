@@ -1,0 +1,161 @@
+<!--common/templates/modal.wxml-->
+<import src='./section.wxml'/>
+<!-- 选择商品模态框 -->
+<template name="modal-goods-confirm">
+<!--mask-->
+<view class="modal-mask" bindtap="toggleModal" data-status="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<scroll-view scroll-y animation="{{animationData}}" class="modal-box modal-goods-confirm" wx:if="{{showModalStatus}}">
+  <view class="modal-container">
+    <view class="modal-header modal-header-goods">
+      <view class="modal-title modal-title-goods">
+        <view>
+          <image src='{{assets_host + curr_goods_type.img}}'/>
+        </view>
+        <view>
+          <span class="money-logo-lg">¥</span><span>{{curr_goods_type.price}}</span>  
+        </view>
+      </view>
+      <view class="modal-close-btn-o" bindtap="toggleModal" data-status="close">
+        <span>×</span>
+      </view>
+    </view>
+    <view class="modal-content">
+      <view class='modal-content-section'>
+        <view>型号尺寸</view>
+        <view class='modal-content-goods-types'>
+        <view wx:for="{{goods_types}}" data-index="{{index}}" class="modal-content-goods-types-item{{curr_goods_type_idx==index?' item-select':''}}" bindtap='selectGoodsType' wx:key="goods_type_id">
+          {{item.description}}
+        </view>
+        </view>
+      </view>
+      <view class='modal-content-section'>
+        <view>数量</view>
+        <view>
+          <view class="modal-content-goods-count">
+            <view class="count-operator{{goods_type_count > 1?'':' disable'}}" bindtap='goodsTypeCount' data-type="sub">-</view>
+            <view>
+              <input type='text' value='{{goods_type_count}}' bindconfirm='inputGoodsTypeCount'></input>
+            </view>
+            <view class="count-operator{{goods_type_count < curr_goods_type.count?'':' disable'}}" bindtap='goodsTypeCount' data-type="add">+</view>
+          </view>
+          <view class='goods_type_count_text' wx:if="{{curr_goods_type.count > 1}}">库存{{curr_goods_type.count}}件</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='btn-custom btn-1' bindtap='confirm'>
+    <view class='btn-pay-text'>
+      <span>确认</span>
+    </view>
+  </view>
+</scroll-view>
+</template>
+
+<!-- 编辑收货地址模态框 -->
+<template name="modal-address-edit">
+<!--mask-->
+<view class="modal-mask" bindtap="toggleModal" data-status="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<scroll-view scroll-y animation="{{animationData}}" class="modal-box modal-address-edit" wx:if="{{showModalStatus}}">
+
+  <view class="modal-container">
+    <view class="modal-header modal-header-address">
+      <view class="modal-title modal-title-address">
+       <view class="{{sectionIndex==0?'modal-title-select':''}}" data-index='0' bindtap='tapModalHeader'>收货地址</view>
+       <view class="{{sectionIndex==1?'modal-title-select':''}}" data-index='1' bindtap='tapModalHeader'>添加收货地址</view>
+      </view>
+      <view class="modal-close-btn" bindtap="toggleModal" data-status="close">
+        <span>×</span>
+      </view>
+    </view>
+    <!-- 选择收货地址页面 -->
+    <view class="modal-content modal-content-address" wx:if="{{sectionIndex==0}}">
+    <radio-group class="radio-group" bindchange="checkAddress">
+      <view wx:for="{{addresses}}" class="modal-content-address-item" wx:key="address_id">
+        <view class='user-adderss-info'>
+          <view>
+            <view class='user-adderss-info-name'>
+            {{item.name}}
+              <span wx:if="{{item.is_default}}">（默认）</span>
+            </view>
+            <view>
+            {{item.phone}}
+            </view>
+          </view>
+          <view>
+            {{item.province + item.city + item.area + item.detail}}
+          </view>
+        </view>
+        <view>
+          <radio value="{{index}}" name="default_address" checked='{{item.id==selected_address.id}}'/>
+        </view>
+     </view>
+    </radio-group>
+    </view>
+    <!-- 添加收货地址页面 -->
+    <view class="modal-content modal-content-address" wx:if="{{sectionIndex==1}}">
+    <template is="address-section" data="{{address_form:address_form,selected_address:selected_address,province_name_list:province_name_list,city_name_list:city_name_list,area_name_list:area_name_list}}"></template>
+    </view>
+  </view>
+  <!-- 选择收货地址页面 -->
+  <view class='btn-custom btn-1' wx:if="{{sectionIndex==0}}" data-index='0' bindtap='tapModalConfirm'>
+    <view class='btn-pay-text'>
+      <span>确认</span>
+    </view>
+  </view>
+  <!-- 添加收货地址页面 -->
+  <view class='btn-custom btn-1' wx:if="{{sectionIndex==1}}" data-index='1' bindtap='tapModalConfirm'>
+    <view class='btn-pay-text'>
+      <span>添加</span>
+    </view>
+  </view>
+</scroll-view>
+</template>
+
+
+<!-- 付款提示模态框 -->
+<template name="modal-pay">
+<!--mask-->
+<view class="modal-mask" wx:if="{{showModalPayStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationDataPay}}" class="modal-pay-box" wx:if="{{showModalPayStatus && qrcode}}">
+  <view class="modal-container modal-container-pay">
+    <view class="modal-header modal-header-pay">
+      <view class="modal-title">
+        支付提示
+      </view>
+    </view>
+    <!-- 支付提示页面 -->
+    <view class="modal-content-pay">
+      <view class='modal-section-pay modal-section-pay-tip'>
+        请通过微信扫码进行支付
+      </view>
+      <view class='modal-section-pay modal-section-pay-price-clipboard'>
+          <view class='modal-section-pay-qrcode' bindtap='previewQrcode' data-type="{{page_type}}">
+           <image src='{{assets_host+qrcode}}'></image>
+          </view>
+          <view class='modal-section-pay-price'>
+            <view bindtap='copyPrice'>
+              <span>¥</span>{{qrcode_price}}
+            </view>
+            <view class='fa-icon modal-section-pay-price-copy' bindtap='copyPrice'>
+              <image src='/assets/icons/fa-copy.png'></image>
+            </view>
+          </view>
+      </view>
+      <view class='modal-section-pay-btngroup'>
+        <view class='pay-btn-close' bindtap="togglePayModal" data-status="close">
+        稍后支付
+        </view>
+        <view class='pay-btn-confirm' bindtap='previewQrcode' data-type='{{page_type}}'>
+        扫码支付
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</template>

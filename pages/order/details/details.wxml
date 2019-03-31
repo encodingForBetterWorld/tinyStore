@@ -1,0 +1,91 @@
+<!--pages/order/confirm/confirm.wxml-->
+<import src='/common/templates/btn.wxml'/>
+<import src='/common/templates/section.wxml'/>
+<import src='/common/templates/modal.wxml'/>
+<view class='container'>
+  <view class='section user-address' wx:if="{{address}}">
+    <image src="/assets/icons/fa-map-marker-gray.png"></image>
+    <view class='user-adderss-info'>
+      <view>
+        <view>
+        {{address.name}}
+        </view>
+        <view>
+        {{address.phone}}
+        </view>
+      </view>
+      <view>
+      {{address.province + address.city + address.area + address.detail}}
+      </view>
+    </view>
+  </view>
+  <view class='section order-content' wx:if="{{orderitem_set && orderitem_set.length > 0}}">
+    <view class='order-goods-list'>
+      <view wx:for="{{orderitem_set}}" wx:for-item="order" class='order-section' wx:key="order_id">
+        <template is="order-section" data="{{...order, assets_host:assets_host}}"></template>
+      </view>
+    </view>
+    <view class="order-footer">
+      <view class='order-price'>
+        <view>
+          <view>
+          商品金额：
+          </view>
+          <view>
+            <span class="money-logo">¥</span>{{total_price}}
+          </view>
+        </view>
+        <view>
+          <view>
+          运费：
+          </view>
+          <view>
+            <span class="money-logo">¥</span>{{freight}}
+          </view>
+        </view>
+        <view>
+          <view>
+          实付款：
+          </view>
+          <view>
+          <span class="money-logo-lg">¥</span><span>{{total_price+freight}}</span>
+          </view>
+        </view>
+      </view>
+      </view>
+  </view>
+  <view class='express-trace-list'>
+   <view wx:for="{{expresstrace_set}}"  wx:for-item="expresstrace" wx:if="{{status==5 || status==1}}" class="{{index==0?'latest':''}}" wx:key="expresstrace_id">
+    <view>{{expresstrace.time}}</view>
+    <view>{{expresstrace.status}}</view>
+   </view>
+   <view wx:if="{{status==3}}" class='latest express-trace-item'>
+     <view>商家正在确认收款</view>
+   </view>
+   <view wx:if="{{status==4}}" class='latest express-trace-item'>
+     <view>商家正在安排发货</view>
+   </view>
+  </view>
+  <view class='section order-content-footer btn-footer' wx:if="{{code}}">
+    <view>
+    订单号：{{code}}
+    </view>
+    <view wx:if="{{status==5 || status==1}}">
+    物流单号：{{express_code}}
+    </view>
+    <view>
+    下单时间：{{create_time}}
+    </view>
+  </view>
+  <view class='order-content-btngroup' wx:if="{{status==0}}">
+    <view class='order-btngroup'>
+      <view class='order-btn-close' data-id='{{id}}' data-type='detail' bindtap='singleClose'>
+      关闭订单
+      </view>
+      <view class='order-btn-pay' data-id='{{id}}' bindtap='singlePay'>
+      继续支付
+      </view>
+    </view>
+  </view>
+</view>
+<template is="modal-pay" data="{{showModalPayStatus: showModalPayStatus,animationDataPay: animationDataPay, qrcode:qrcode, qrcode_price:qrcode_price,assets_host:assets_host,page_type:'detail'}}"></template>

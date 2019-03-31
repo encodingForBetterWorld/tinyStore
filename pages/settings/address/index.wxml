@@ -1,0 +1,39 @@
+<!--pages/settings/address/index.wxml-->
+<view class='container'>
+  <view class='pl-settings'>
+    <navigator class='pl-settings-item pl-settings-add' url='add/add'>
+      <span>添加收货地址</span>
+      <i class='arrow arrow-right'></i>
+    </navigator>
+  </view>
+  <view class='pl-settings'>
+    <view class='pl-addresses-list'>
+      <block wx:for="{{list}}" wx:key="list_key">
+        <view data-index="{{index}}" class="pl-address-item{{item.id==delete_id?' section-delete':''}}" bindtouchstart="touchStart" bindtouchmove="touchMove">
+          <view class='user-adderss-info'>
+            <view>
+              <view class='user-adderss-info-name'>
+              {{item.name}}
+                <span wx:if="{{item.is_default}}">（默认）</span>
+              </view>
+              <view>
+              {{item.phone}}
+              </view>
+            </view>
+            <view>
+            {{item.province + item.city + item.area + item.detail}}
+            </view>
+          </view>
+          <navigator url='edit/edit?id={{item.id}}' class='user-adderss-edit'>
+           <view class='fa-icon'>
+            <image src="/assets/icons/fa-edit.png"></image>           
+           </view>
+          </navigator>
+          <view class='btn-delete' wx:if="{{item.id==delete_id}}" bindtap='deleteAddress' data-index="{{index}}" data-id="{{item.id}}">
+          删除
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

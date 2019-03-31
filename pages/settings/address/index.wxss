@@ -1,0 +1,21 @@
+/* pages/settings/address/index.wxss */
+@import "../settings.wxss";
+.pl-settings-add{
+  padding: 20rpx 15rpx;
+}
+.pl-addresses-list{
+  display: flex;
+  flex-flow: column nowrap;
+}
+.pl-address-item{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3rpx solid #EDEDED;
+  background-color: #FFF;
+}
+.user-adderss-edit{
+  display: flex;
+  align-items: center;
+  padding: 15rpx 32rpx;
+}
+
